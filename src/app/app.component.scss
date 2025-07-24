@@ -1,0 +1,259 @@
+.statement {
+    display: flex;
+    justify-content: center;
+
+    color: #023A6B;
+
+    font-family: 'Eczar', serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+    gap: 5vh;
+
+    padding: 0 2rem 0;
+}
+
+.statement h1 {
+    width: 70vw;
+}
+
+.labeled-latte {
+
+}
+
+.extra-latte {
+    position: relative;
+}
+
+#rotating-label, #elatte {
+    display: block;
+}
+
+#rotating-label {
+    position: absolute;
+    top: 7rem;
+    left: 8rem;
+    animation: rotation 12s infinite linear;
+}
+
+@keyframes rotation {
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10vw;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.item-name {
+    display: flex;
+    flex-direction: row;
+
+    font-family: 'Eczar', serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #023A6B;
+}
+
+.price-capsule {
+    font-size: 16px;
+    color: white;
+
+    width: 54px;
+    height: 23px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FF7733;
+    border-radius: 16px;
+
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.options .radios {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1vw;
+    color: #023A6B;
+}
+
+.check {
+    display: flex;
+    gap: 0.5vw;
+
+    font-family: 'Open Sans', sans-serif;
+    color: #023A6B;
+    font-size: 14px;
+}
+
+.footer {
+    display: flex;
+
+    align-items: center;
+    gap: 1vw;
+}
+
+.cart-button {
+    width: 141px;
+    height: 48px;
+    background-color: #FEF2E8;
+    border: 2px solid #FFBD5C;
+    border-radius: 64px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #023A6B;
+}
+
+.cart-button:hover {
+    background-color: #FFBD5C;
+}
+
+.help {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 23px;
+    width: 23px;
+}
+
+.info-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+
+    background-color: #FFBD5C;
+
+    border: none;
+    border-radius: 16px;
+
+    transition: all 0.2s;
+}
+
+.info-button:hover {
+    width: 100%;
+    height: 100%;
+}
+
+::ng-deep .sugar-box {
+    width: 24px;
+    height: 24px;
+    .p-checkbox-box {
+        width: 24px;
+        height: 24px;
+        border-radius: 8px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none !important;
+    }
+    .p-checkbox-icon {
+        width: 12px;
+        height: 12px;
+        transform-origin: center;
+        transform: translateY(-100%);
+    }
+}
+
+::ng-deep .sugar-box.p-checkbox-checked .p-checkbox-box {
+  background-color: #FFBD5C !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .sugar-box.p-checkbox-checked .p-checkbox-icon {
+    transform: translateY(0)
+}
+
+::ng-deep .option-radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 24px;
+    background-color: white;
+    width: 24px;
+    height: 24px;
+}
+
+::ng-deep .option-radio .p-radiobutton-box {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: white;
+}
+
+::ng-deep .option-radio.p-radiobutton-checked:hover .p-radiobutton-box {
+  box-shadow: none !important;
+}
+
+::ng-deep .option-radio.p-radiobutton-checked .p-radiobutton-box {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .option-radio.p-radiobutton-checked .p-radiobutton-icon {
+  background-color: #FF7733 !important;
+  border: none;
+  animation: radio-anim 150ms ease-out forwards
+}
+
+@keyframes radio-anim {
+  from {
+    transform: translateX(100%) scale(0);
+
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes checkbox-anim {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
