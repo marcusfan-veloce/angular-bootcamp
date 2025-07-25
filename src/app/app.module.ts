@@ -3,16 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RadioButtonModule } from 'primeng/radiobutton'
 import { CheckboxModule } from 'primeng/checkbox'
@@ -31,7 +21,6 @@ import { HeaderModule } from './components/header';
     RadioButtonModule,
     CheckboxModule,
     HeaderModule,
->>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]
