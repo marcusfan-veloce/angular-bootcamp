@@ -1,0 +1,138 @@
+<p-sidebar
+    [(visible)]="sidebarVisible"
+    [showCloseIcon]="false"
+    position="right"
+    styleClass="sidebar"
+>
+    <div *ngIf="sidebarState.item$ | async as item" class="sidebar-content">
+        <div class="sidebar-title">
+            <span class="name">{{item.name}}</span>
+            <span class="price">${{item.price}}</span>
+        </div>
+        <div class="sidebar-image">
+            <div *ngIf="item.id == 1; else normalView">
+                <img src="assets/latte-stamp.svg" alt="item" width="320px" height="267px"/>
+            </div>
+            <ng-template #normalView>
+                <img src={{item.imgUrl}} alt="item" width="320px" height="267px"/>
+            </ng-template>
+        </div>
+        <p-divider></p-divider>
+        <div class="nutrition">
+            <div class="list">
+                <div class="tile">
+                    <span class="blue">Calories</span>
+                    <span class="orange">{{item.calories}}</span>
+                </div>
+                <div class="tile">
+                    <span class="blue">Total Fat</span>
+                    <span class="orange">{{item.fat}}</span>
+                </div>
+                <div class="tile">
+                    <span class="blue">Cholesterol</span>
+                    <span class="orange">{{item.cholesterol}}</span>
+                </div>
+                <div class="tile">
+                    <span class="blue">Sodium</span>
+                    <span class="orange">{{item.sodium}}</span>
+                </div>
+                <div class="tile">
+                    <span class="blue">Total Carbohydrate</span>
+                    <span class="orange">{{item.carb}}</span>
+                </div>
+                <div class="tile">
+                    <span class="blue">Protein</span>
+                    <span class="orange">{{item.protein}}</span>
+                </div>
+            </div>
+            <p-divider></p-divider>
+            <div class="list">
+                <div class="tile">
+                    <span class="blue">Vitamin D</span>
+                    <span class="orange">{{item.vitD}}</span>
+                </div>
+                <div class="tile">
+                    <span class="blue">Calcium</span>
+                    <span class="orange">{{item.calcium}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button (click)="this.sidebarVisible = false">COOL, GOT IT</button>
+        </div>
+    </div>
+
+</p-sidebar>
+
+<div class="content">
+    <div class="statement">
+        <h1>We believe a cup of coffee is one of the most important, simple <span style="color: #FF7733;">pleasures</span> in life</h1>
+    </div>
+
+    <div class="items">
+        <ng-container *ngFor="let item of items">
+            <div class="item">
+                <div *ngIf="item.id == 1; else normalView">
+                    <div class="labeled-latte">
+                        <div class="extra-latte">
+                            <img id="elatte" src={{item.imgUrl}} alt="item" />
+                            <img id="rotating-label" src="assets/perfect-classic-arabic.svg" alt="label" />
+                        </div>
+                    </div>
+                </div>
+                <ng-template #normalView>
+                    <img src={{item.imgUrl}} alt="item" />
+                </ng-template>
+                <div class="item-name">
+                    <span>{{item.name}}</span>
+                    <div class="price-capsule">
+                        <span>${{item.price}}</span>
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="radios">
+                        <div class="radio">
+                            <ng-container *ngFor="let size of item.sizes">
+                                <p-radioButton
+                                    styleClass="option-radio"
+                                    [inputId]="item + item.name"
+                                    [name]="'sizeGroup' + item.id"
+                                    [value]="size"
+                                    [(ngModel)]="item.size"
+                                    />
+                                <label for="item{{item.id}}-size{{size}}">
+                                    {{size}} ML
+                                </label>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="check">
+                        <p-checkbox
+                            [binary]="true"
+                            styleClass="sugar-box"
+                            [inputId]="item.name"
+                            [name]="item.name"
+                            [(ngModel)]="item.sugar"
+                            checkboxIcon="pi pi-circle-fill"
+                        />
+                        <span>ADD SUGAR</span>
+                    </div>
+                </div>
+                <div class="footer">
+                    <button class="cart-button" [disabled]="item.size == null" *ngIf="getAmt(item) === 0" (click)="add(item)">ADD TO CART</button>
+                    <div class="multi" *ngIf="getAmt(item) !== 0">
+                        <button (click)="remove(item)" class="cart-option"><img src="assets/minus.svg" alt="minus-button"/></button>
+                        <span>{{getAmt(item)}}</span>
+                        <button (click)="add(item)" class="cart-option"><img src="assets/plus.svg" alt="plus-button"/></button>
+                    </div>
+                    <div class="help">
+                        <button (click)="checkSidebar(item)" class="info-button"><img src="assets/info.svg" alt="info-icon"></button>
+                    </div>
+                </div>
+
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+

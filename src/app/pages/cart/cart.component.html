@@ -1,0 +1,86 @@
+<div class="cart-content">
+    <div class="layout">
+        <span class="title">Shopping Cart</span>
+        <div class="cart-view">
+            <div class="cart">
+                <div *ngFor="let c of cartItems$ | async">
+                    <div *ngIf="c.count !== 0">
+                        <div class="coffee-card">
+                            <div class="card-image">
+                                <img [src]="c.item.imgUrl" alt="coffee img" width="100px" height="100px"/>
+                            </div>
+                            <div class="card-info">
+                                <div class="coffee-info">
+                                    <span class="name">{{c.item.name}}</span>
+                                    <div class="price">
+                                        <span>${{c.item.price}}</span>
+                                    </div>
+                                </div>
+                                <div class="coffee-details">
+                                    <div class="detail">
+                                        <img src="assets/size.svg" alt="size icon" />
+                                        <span>{{c.size}} ML</span>
+
+                                    </div>
+                                    <div *ngIf="c.sugar" class="detail">
+                                        <img src="assets/sugar.svg" alt="sugar icon" />
+                                        <span>Sugar</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-qty">
+                                <div class="multi">
+                                    <button (click)="remove(c.item)" [disabled]="getAmt(c.item) == 1" class="cart-option"><img src="assets/minus.svg" alt="minus-button"/></button>
+                                    <span>{{getAmt(c.item)}}</span>
+                                    <button (click)="add(c.item)" class="cart-option"><img src="assets/plus.svg" alt="plus-button"/></button>
+                                </div>
+                                <div (mouseenter)="hoveredItem = c" (mouseleave)="hoveredItem = null">
+                                    <button class="delete-button" (click)="clearItem(c.item)">
+                                        <img [src]="hoveredItem === c ? 'assets/delete-hover.svg' : 'assets/delete.svg'" alt="item" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="cart-divider" *ngIf="c !== cart[cart.length-1]"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bill">
+                <span class="title">Checkout</span>
+
+                <div *ngFor="let c of cartItems$ | async">
+                    <div class="bill-item" *ngIf="c.count === 1; else multiItem">
+                        <span class="blue">{{c.item.name}}, {{c.size}} ml</span>
+                        <span class="orange">{{c.item.price}}</span>
+                    </div>
+                    <ng-template #multiItem>
+                        <div class="bill-item">
+                            <span class="blue">{{c.item.name}}, {{c.size}} ml</span>
+                            <span class="orange">{{c.count}}X {{c.item.price}}</span>
+                        </div>
+                    </ng-template>
+                </div>
+
+                <div *ngIf="cart.length > 0">
+                    <div class="delivery-item">
+                        <span class="blue">Delivery</span>
+                        <span class="orange">$5</span>
+                    </div>
+
+                    <p-divider></p-divider>
+
+                    <div class="delivery-item">
+                        <span class="blue">Delivery</span>
+                        <span class="orange">${{getTotal()}}</span>
+                    </div>
+                </div>
+
+                <button class="payment">TO PAY</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

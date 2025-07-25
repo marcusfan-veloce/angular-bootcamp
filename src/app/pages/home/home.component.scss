@@ -1,5 +1,119 @@
-<<<<<<< Updated upstream
-=======
+::ng-deep .sidebar {
+    width: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    &.p-sidebar {
+        width: 400px !important;
+        border-top-left-radius: 24px;
+        border-bottom-left-radius: 24px;
+    }
+
+    .p-sidebar-content {
+        height: 100%;
+    }
+}
+
+.labeled-latte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .sidebar-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-family: 'Eczar', serif;
+        font-weight: 700;
+        .name {
+            font-size: 40px;
+            color: #023A6B;
+        }
+
+        .price {
+            font-size: 24px;
+            color: white;
+
+            width: 75px;
+            height: 33px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            background-color: #FF7733;
+            border-radius: 16px;
+        }
+    }
+
+    .sidebar-image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nutrition {
+        padding: 0 1rem 0;
+        .list {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Open Sans',sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            gap: 1rem;
+
+            .tile {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .orange {
+                    color: #FF7733;
+                }
+
+                .blue {
+                    color: #023A6B;
+                }
+            }
+
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: auto;
+
+        button {
+            width: 320px;
+            height: 48px;
+
+            border: 2px solid #FF7733;
+            border-radius: 64px;
+            background: transparent;
+
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: #023A6B;
+        }
+
+        button:hover {
+            background: #FF7733;
+        }
+    }
+
+
+}
+
 .statement {
     display: flex;
     justify-content: center;
@@ -154,6 +268,41 @@
     color: #023A6B;
 }
 
+.multi {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 141px;
+    height: 48px;
+    background: #FFBD5C;
+    border: 2px solid #FFBD5C;
+    border-radius: 64px;
+    margin: 0;
+    padding: 0;
+
+    span {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #023A6B;
+    }
+
+    .cart-option {
+        border: none;
+        width: 48px;
+        height: 48px;
+        margin: 0 -2px;
+        border-radius: 24px;
+        padding: 0;
+        background: transparent;
+    }
+
+    .cart-option:hover {
+        background: #FF7733;
+    }
+}
+
 .cart-button:hover {
     background-color: #FFBD5C;
 }
@@ -273,4 +422,3 @@
         transform: translateY(0%);
     }
 }
->>>>>>> Stashed changes

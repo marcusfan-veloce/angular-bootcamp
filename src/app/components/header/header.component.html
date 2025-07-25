@@ -1,0 +1,23 @@
+<div class="header">
+    <div class="header-content">
+        <div class="logo">
+            <img src="assets/logo.svg" alt="logo"/>
+            <div class="logo-text">
+                <a routerLink="">VELOCE COFFEE SHOP</a>
+            </div>
+        </div>
+        <div class="cart">
+            <div *ngIf="itemsService.totalItems$ | async as total; else nocart">
+                <div class="cart-with-items">
+                    <img src="assets/full-cart.svg" alt="cart" />
+                    <span>{{total}}</span>
+                </div>
+            </div>
+            <ng-template #nocart>
+                <img src="assets/cart.svg" alt="cart" />
+            </ng-template>
+
+            <a routerLink="/cart">SHOPPING CART</a>
+        </div>
+    </div>
+</div>
